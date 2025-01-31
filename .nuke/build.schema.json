@@ -69,6 +69,7 @@
               "Cleaning",
               "Compile",
               "CreateInstaller",
+              "DebugBuild",
               "PublishGitHubRelease"
             ]
           }
@@ -86,6 +87,7 @@
               "Cleaning",
               "Compile",
               "CreateInstaller",
+              "DebugBuild",
               "PublishGitHubRelease"
             ]
           }

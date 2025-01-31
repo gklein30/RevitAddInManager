@@ -98,11 +98,11 @@ public sealed class AddinManagerBase
         }
         Result result = Result.Failed;
         var alc = new AssemblyLoadContext(filePath);
-        Stream stream = null;
+        //Stream stream = null;
         try
         {
-            stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-            Assembly assembly = alc.LoadFromStream(stream);
+            //stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            Assembly assembly = alc.LoadFromAssemblyPath(_activeCmd.FilePath);
             object instance = assembly.CreateInstance(_activeCmdItem.FullClassName);
             WeakReference alcWeakRef = new WeakReference(alc, trackResurrection: true);
             if (instance is IExternalCommand externalCommand)
@@ -118,7 +118,7 @@ public sealed class AddinManagerBase
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
-            stream.Close();
+            //stream.Close();
         }
         catch (Exception ex)
         {
@@ -133,7 +133,7 @@ public sealed class AddinManagerBase
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
             }
-            stream?.Close();
+            //stream?.Close();
             Debug.WriteLine("Assembly unloaded");
 
         }
